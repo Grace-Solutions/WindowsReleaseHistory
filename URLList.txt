@@ -1,0 +1,3 @@
+https://learn.microsoft.com/$($CultureInfo.Name)/windows/release-health/release-information
+https://learn.microsoft.com/$($CultureInfo.Name)/windows/release-health/windows11-release-information
+https://learn.microsoft.com/$($CultureInfo.Name)/windows-server/get-started/windows-server-release-info
