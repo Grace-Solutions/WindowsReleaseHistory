@@ -1,4 +1,4 @@
-﻿## Microsoft Function Naming Convention: http://msdn.microsoft.com/en-us/library/ms714428(v=vs.85).aspx
+## Microsoft Function Naming Convention: http://msdn.microsoft.com/en-us/library/ms714428(v=vs.85).aspx
 
 #region Function Get-WindowsReleaseHistory
 Function Get-WindowsReleaseHistory
@@ -10,6 +10,9 @@ Function Get-WindowsReleaseHistory
           .DESCRIPTION
           This function dynamically navigates the HTML document returned from each web request using XPath, and the HTMLAgilityPack library. All prerequisite requirements are handled within the function.
                     
+          .LINK
+          https://github.com/Grace-Solutions/WindowsReleaseHistory
+          
           .EXAMPLE
           Get-WindowsReleaseHistory
           
@@ -26,6 +29,8 @@ Function Get-WindowsReleaseHistory
           Get-WindowsReleaseHistory | Where-Object {($_.Releases.KBArticle -ieq 'KB5044384')}
 
           .NOTES
+          Each operating system will look similar to the following structure and contain associated releases.
+
           OperatingSystem           : Windows 11
           Type                      : Client
           ReleaseID                 : 24H2
@@ -35,6 +40,27 @@ Function Get-WindowsReleaseHistory
                                       KBArticleURL=https://support.microsoft.com/help/5044384}, @{ServicingOptions=System.String[]; AvailabilityDate=10/8/2024 12:00:00 AM; Version=10.0.26100.2033; 
                                       KBArticle=KB5044284; KBArticleURL=https://support.microsoft.com/help/5044284}, @{ServicingOptions=System.String[]; AvailabilityDate=10/1/2024 12:00:00 AM; 
                                       Version=10.0.26100.1742; KBArticle=; KBArticleURL=https://support.microsoft.com/help/5044284}}
+
+          .NOTES  
+          Each release will look similar to the following structure.
+
+          ServicingOptions : {General Availability Channel}
+          AvailabilityDate : 10/18/2022 12:00:00 AM
+          Version          : 10.0.19045.2130
+          KBArticle        : 
+          KBArticleURL     : https://support.microsoft.com/help/5019959
+
+          ServicingOptions : {LTSB, CB, CBB}
+          AvailabilityDate : 7/29/2015 12:00:00 AM
+          Version          : 10.0.10240.16405
+          KBArticle        : KB3074683
+          KBArticleURL     : https://support.microsoft.com/help/3074683
+
+          ServicingOptions : {LTSC, General Availability Channel}
+          AvailabilityDate : 10/24/2024 12:00:00 AM
+          Version          : 10.0.26100.2161
+          KBArticle        : KB5044384
+          KBArticleURL     : https://support.microsoft.com/help/5044384
         #>
         
         [CmdletBinding()]  
