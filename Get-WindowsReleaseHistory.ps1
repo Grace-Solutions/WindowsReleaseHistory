@@ -230,7 +230,7 @@ Function Get-WindowsReleaseHistory
                       $WebClient = New-Object -TypeName 'System.Net.WebClient'
                           
                     #Define the update history URL list                              
-                      [String]$URLListSourceURL = "https://raw.githubusercontent.com/freedbygrace/WindowsUpdateHistory/refs/heads/main/Get-WindowsReleaseHistory.txt"
+                      [String]$URLListSourceURL = "https://raw.githubusercontent.com/Grace-Solutions/WindowsReleaseHistory/refs/heads/main/URLList.txt"
                           
                     #Process the update history URL list
                       $URLList = Try {$WebClient.DownloadString($URLListSourceURL).Split("`r`n", [System.StringSplitOptions]::RemoveEmptyEntries)} Catch {$Null}
