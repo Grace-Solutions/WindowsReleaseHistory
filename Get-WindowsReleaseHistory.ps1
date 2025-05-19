@@ -140,8 +140,8 @@ Function Get-WindowsReleaseHistory
                       $FunctionStartTime = (Get-Date)
                     
                     [String]$FunctionName = $MyInvocation.MyCommand
-                    [System.IO.FileInfo]$FunctionPath = $PSCommandPath
-                    [System.IO.DirectoryInfo]$FunctionDirectory = "$($FunctionPath.Directory.FullName)"
+                    #[System.IO.FileInfo]$FunctionPath = $PSCommandPath
+                    #[System.IO.DirectoryInfo]$FunctionDirectory = "$($FunctionPath.Directory.FullName)"
                       
                     $LoggingDetails.LogMessage = "$($GetCurrentDateTimeMessageFormat.Invoke()) - Function `'$($FunctionName)`' is beginning. Please Wait..."
                     Write-Verbose -Message ($LoggingDetails.LogMessage)
@@ -204,7 +204,7 @@ Function Get-WindowsReleaseHistory
                   
                                         ForEach ($RequiredPackageKVP In $PackageDictionary.RequiredPackages.GetEnumerator())
                                           {
-                                              $PackageInfoLocal = Try {Get-Package -Name ($RequiredPackageKVP.Key) -ProviderName ($RequiredPackageKVP.Value.ProviderName)} Catch {$Null}
+                                              $PackageInfoLocal = Try {Get-Package -Name ($RequiredPackageKVP.Key) -ProviderName ($RequiredPackageKVP.Value.ProviderName) -ErrorAction SilentlyContinue} Catch {$Null}
                         
                                               Switch ($Null -ieq $PackageInfoLocal)
                                                 {
@@ -279,6 +279,8 @@ Function Get-WindowsReleaseHistory
                                               $HTMLWebRequest = New-Object -TypeName 'HtmlAgilityPack.HtmlWeb'
 
                                               $HTMLWebRequestObject = $HTMLWebRequest.Load($URL.OriginalString)
+
+                                              $RegularExpressionTable = New-Object -TypeName 'System.Collections.Specialized.OrderedDictionary'
 
                                               Switch ($URL.OriginalString)
                                                 {
